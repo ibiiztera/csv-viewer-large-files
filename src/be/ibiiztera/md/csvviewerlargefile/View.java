@@ -1,3 +1,5 @@
+package be.ibiiztera.md.csvviewerlargefile;
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -41,19 +43,20 @@ public class View extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("Bundle"); // NOI18N
-        jButton1.setText(bundle.getString("<<")); // NOI18N
+        jButton1.setText(bundle.getString("<<_1")); // NOI18N
 
-        jButton2.setText(bundle.getString("<")); // NOI18N
+        jButton2.setText(bundle.getString("<_1")); // NOI18N
 
-        jButton3.setText(bundle.getString(">")); // NOI18N
+        java.util.ResourceBundle bundle1 = java.util.ResourceBundle.getBundle("be/ibiiztera/md/csvviewerlargefile/Bundle"); // NOI18N
+        jButton3.setText(bundle1.getString(">")); // NOI18N
 
-        jButton4.setText(bundle.getString(">>")); // NOI18N
+        jButton4.setText(bundle1.getString(">>")); // NOI18N
 
-        jLabel1.setText(bundle.getString("GOTO")); // NOI18N
+        jLabel1.setText(bundle1.getString("GOTO")); // NOI18N
 
-        jTextField1.setText(bundle.getString("1")); // NOI18N
+        jTextField1.setText(bundle1.getString("1")); // NOI18N
 
-        jButton5.setText(bundle.getString("GO")); // NOI18N
+        jButton5.setText(bundle1.getString("GO")); // NOI18N
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -71,7 +74,7 @@ public class View extends javax.swing.JFrame {
         jMenu1.setText(bundle.getString("FILE")); // NOI18N
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText(bundle.getString("EDIT")); // NOI18N
+        jMenu2.setText(bundle1.getString("EDIT")); // NOI18N
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
