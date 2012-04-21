@@ -49,21 +49,25 @@ public class View extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("Bundle"); // NOI18N
-        jButton1.setText(bundle.getString("<<_1")); // NOI18N
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("be/ibiiztera/md/csvviewerlargefile/Bundle"); // NOI18N
+        jButton1.setText(bundle.getString("RR")); // NOI18N
 
-        jButton2.setText(bundle.getString("<_1")); // NOI18N
+        jButton2.setText(bundle.getString("R")); // NOI18N
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
-        java.util.ResourceBundle bundle1 = java.util.ResourceBundle.getBundle("be/ibiiztera/md/csvviewerlargefile/Bundle"); // NOI18N
-        jButton3.setText(bundle1.getString(">")); // NOI18N
+        jButton3.setText(bundle.getString("F")); // NOI18N
 
-        jButton4.setText(bundle1.getString(">>")); // NOI18N
+        jButton4.setText(bundle.getString("FF")); // NOI18N
 
-        jLabel1.setText(bundle1.getString("GOTO")); // NOI18N
+        jLabel1.setText(bundle.getString("GOTO")); // NOI18N
 
-        jTextField1.setText(bundle1.getString("1")); // NOI18N
+        jTextField1.setText(bundle.getString("NO")); // NOI18N
 
-        jButton5.setText(bundle1.getString("GO")); // NOI18N
+        jButton5.setText(bundle.getString("GO")); // NOI18N
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -80,7 +84,7 @@ public class View extends javax.swing.JFrame {
 
         jMenu1.setText(bundle.getString("FILE")); // NOI18N
 
-        jMenuItem1.setText("Open");
+        jMenuItem1.setText(bundle.getString("OPEN")); // NOI18N
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
@@ -88,27 +92,27 @@ public class View extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem1);
 
-        jMenuItem3.setText("Open from URL");
+        jMenuItem3.setText(bundle.getString("OPENFROMURL")); // NOI18N
         jMenu1.add(jMenuItem3);
 
-        jMenuItem5.setText("Save");
+        jMenuItem5.setText(bundle.getString("SAVE")); // NOI18N
         jMenu1.add(jMenuItem5);
 
-        jMenuItem6.setText("Save as ...");
+        jMenuItem6.setText(bundle.getString("SAVE AS ...")); // NOI18N
         jMenu1.add(jMenuItem6);
 
-        jMenuItem2.setText("Close");
+        jMenuItem2.setText(bundle.getString("CLOSE")); // NOI18N
         jMenu1.add(jMenuItem2);
 
-        jMenuItem4.setText("Quit");
+        jMenuItem4.setText(bundle.getString("QUIT")); // NOI18N
         jMenu1.add(jMenuItem4);
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText(bundle1.getString("EDIT")); // NOI18N
+        jMenu2.setText(bundle.getString("EDIT")); // NOI18N
         jMenuBar1.add(jMenu2);
 
-        jMenu3.setText("Documents");
+        jMenu3.setText(bundle.getString("DOCUMENTS")); // NOI18N
         jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
@@ -161,6 +165,10 @@ public class View extends javax.swing.JFrame {
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
