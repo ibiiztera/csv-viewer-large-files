@@ -6,7 +6,7 @@ package be.ibiiztera.md.csvviewerlargefile.earthquake;
 
 /**
  *
- * @author Mary
+ * @author Manuel DAHMEN
  */
 public class Data {
     public class GeoData
