@@ -8,7 +8,7 @@ package be.ibiiztera.md.csvviewerlargefile.earthquake;
  *
  * @author Mary
  */
-class Data {
+public class Data {
     public class GeoData
     {
         public float longitude;
