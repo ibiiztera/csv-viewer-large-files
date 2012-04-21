@@ -32,14 +32,16 @@ public interface RandomAccess {
      * @param num numéro de la ligne
      * @return ligne telle quelle
      */
-    public String ligne(int num);
+    public String ligne(int num)
+        throws LigneIndexTooBigException, LigneIndexTooSmallException;
     /***
      * retourne une colonne telle quelle
      * @param ligne numéro de la ligne
      * @param nom
      * @return 
      */
-    public String colonne(String ligne, String nom);
+    public String colonne(String ligne, String nom)
+            throws ColonneIndexTooBigException, ColonneIndexTooSmallException, LectureColonneException;
     /**
      * liste des colonnes
      * */
@@ -50,5 +52,7 @@ public interface RandomAccess {
      * @param debut ligne de début 
      * @param fin  ligne de fin (exclus)
      */
-    public ArrayList<ArrayList<String>> select(ArrayList<String> colonnes, int debut, int fin);
+    public ArrayList<ArrayList<String>> select(ArrayList<String> colonnes, int debut, int fin)
+        throws LigneIndexTooBigException, LigneIndexTooSmallException;
+            ;
 }

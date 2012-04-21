@@ -83,7 +83,9 @@ public class CSVRA implements RandomAccess{
     }
 
     @Override
-    public String ligne(int num) {
+    public String ligne(int num) 
+        throws LigneIndexTooBigException, LigneIndexTooSmallException
+    {
         try {
             RandomAccessFile raf = new RandomAccessFile(f, java.util.ResourceBundle.getBundle("be/ibiiztera/md/csvviewerlargefile/Bundle").getString("R"));
             raf.seek(index.get(num));
@@ -98,21 +100,49 @@ public class CSVRA implements RandomAccess{
     }
     private int colonne(String nom)
     {
-        return colonnes.indexOf(nom);
+        return colonnes.indexOf(nom)+1;
     }
     @Override
-    public String colonne(String ligne, String nom) {
-        throw new UnsupportedOperationException(java.util.ResourceBundle.getBundle("be/ibiiztera/md/csvviewerlargefile/Bundle").getString("NOT SUPPORTED YET."));
+    public String colonne(String ligne, String nom)
+            throws ColonneIndexTooBigException, ColonneIndexTooSmallException, LectureColonneException{
+        int colIdx = 0;
+        int colonne = colonne(nom);
+        if(colonne>colonnes.size())
+            throw new ColonneIndexTooBigException();
+        if(colonne<=0)
+            throw new ColonneIndexTooSmallException();
+        int i=0;
+        while(colIdx<colonnes.size() &&i<ligne.length())
+            {
+                if(ligne.substring(i, 1).equals(ligne.indexOf(ligneSep)))
+                colIdx++;
+                if(colIdx==colonne)
+                    return ligne.substring(i, ligne.indexOf(ligneSep, i+1)); 
+                i++;
+            }
+        throw new LectureColonneException();
     }
 
     @Override
     public ArrayList<String> colonnes() {
-        throw new UnsupportedOperationException(java.util.ResourceBundle.getBundle("be/ibiiztera/md/csvviewerlargefile/Bundle").getString("NOT SUPPORTED YET."));
+        return colonnes;
     }
 
     @Override
-    public ArrayList<ArrayList<String>> select(ArrayList<String> colonnes, int debut, int fin) {
-        throw new UnsupportedOperationException(java.util.ResourceBundle.getBundle("be/ibiiztera/md/csvviewerlargefile/Bundle").getString("NOT SUPPORTED YET."));
+    public ArrayList<ArrayList<String>> select(ArrayList<String> colonnes, int debut, int fin) 
+    throws LigneIndexTooBigException, LigneIndexTooSmallException{
+        ArrayList<ArrayList<String>> lignes = new ArrayList<ArrayList<String>>();
+        for(int i=debut; i<fin; i++)
+        {
+            String ligne = ligne(i);
+            String [] cols = ligne.split(ligneSep);
+            ArrayList<String> lig = new ArrayList<String>();
+            for(int j=0; j<cols.length; j++)
+                lig.add(cols[j]);
+            lignes.add(lig);
+        }
+        return lignes;
+        
     }
 
 }
