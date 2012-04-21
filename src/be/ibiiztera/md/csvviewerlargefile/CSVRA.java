@@ -4,6 +4,7 @@ package be.ibiiztera.md.csvviewerlargefile;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -123,23 +124,34 @@ public class CSVRA implements RandomAccess{
             }
         throw new LectureColonneException();
     }
-
+    protected ArrayList<String> selectColonnes(List<String> ligne, ArrayList<String> col)
+    {
+        ArrayList<String> ret = new ArrayList<String>();
+        for(int i=0; i<col.size(); i++)
+        {
+            int pos = -1;
+            if((pos=java.util.Collections.binarySearch(ligne, col.get(i)))>=0)
+            {
+                ret.add(ligne.get(pos));
+            }
+            
+        }
+        return ret;
+    }
     @Override
     public ArrayList<String> colonnes() {
         return colonnes;
     }
 
     @Override
-    public ArrayList<ArrayList<String>> select(ArrayList<String> colonnes, int debut, int fin) 
+    public ArrayList<ArrayList<String>> select(ArrayList<String> scol, int debut, int fin) 
     throws LigneIndexTooBigException, LigneIndexTooSmallException{
         ArrayList<ArrayList<String>> lignes = new ArrayList<ArrayList<String>>();
         for(int i=debut; i<fin; i++)
         {
             String ligne = ligne(i);
-            String [] cols = ligne.split(ligneSep);
-            ArrayList<String> lig = new ArrayList<String>();
-            lig.addAll(Arrays.asList(cols));
-            lignes.add(lig);
+            String colOrig []  = ligne.split(ligneSep);
+            lignes.add(selectColonnes(Arrays.asList(colOrig), scol));
         }
         return lignes;
         
