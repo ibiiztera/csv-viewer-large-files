@@ -3,6 +3,7 @@ package be.ibiiztera.md.csvviewerlargefile;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -137,8 +138,7 @@ public class CSVRA implements RandomAccess{
             String ligne = ligne(i);
             String [] cols = ligne.split(ligneSep);
             ArrayList<String> lig = new ArrayList<String>();
-            for(int j=0; j<cols.length; j++)
-                lig.add(cols[j]);
+            lig.addAll(Arrays.asList(cols));
             lignes.add(lig);
         }
         return lignes;
