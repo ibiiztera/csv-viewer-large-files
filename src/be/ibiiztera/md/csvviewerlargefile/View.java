@@ -1,5 +1,8 @@
 package be.ibiiztera.md.csvviewerlargefile;
 
+import java.io.File;
+import java.util.ArrayList;
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -163,7 +166,9 @@ public class View extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
+        SourceChooser sc = new SourceChooser(this, true);
+        sc.show(true);
+        loadFile(sc.getFile());
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -232,4 +237,12 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
+    private CSVRA csv = null;
+    private void loadFile(File file) {
+        csv = new CSVRA();
+        csv.buildIndex(file);
+        ArrayList<String> cols = csv.colonnes();
+        for(int i=0; i<cols.size(); i++)
+            System.out.println(cols.get(i));
+    }
 }

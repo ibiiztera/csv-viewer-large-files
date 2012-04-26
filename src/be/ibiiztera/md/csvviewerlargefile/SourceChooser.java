@@ -4,6 +4,8 @@
  */
 package be.ibiiztera.md.csvviewerlargefile;
 
+import java.io.File;
+
 /**
  *
  * @author Mary
@@ -32,12 +34,18 @@ public class SourceChooser extends javax.swing.JDialog {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextAreaFiles = new javax.swing.JTextArea();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jButtonOpen = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jProgressBarLoad = new javax.swing.JProgressBar();
         jLabelProgress = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        jFileChooserFile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jFileChooserFileActionPerformed(evt);
+            }
+        });
 
         jTextAreaFiles.setColumns(20);
         jTextAreaFiles.setRows(5);
@@ -45,7 +53,12 @@ public class SourceChooser extends javax.swing.JDialog {
 
         jButton1.setText("Paste from clipboard");
 
-        jButton2.setText("Open");
+        jButtonOpen.setText("Open");
+        jButtonOpen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonOpenActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Close");
 
@@ -60,7 +73,7 @@ public class SourceChooser extends javax.swing.JDialog {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonOpen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabelProgress, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -76,7 +89,7 @@ public class SourceChooser extends javax.swing.JDialog {
                         .addGap(7, 7, 7)
                         .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2)
+                        .addComponent(jButtonOpen)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -111,6 +124,16 @@ public class SourceChooser extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOpenActionPerformed
+        f = new File(jTextAreaFiles.getText());
+        
+    }//GEN-LAST:event_jButtonOpenActionPerformed
+
+    private void jFileChooserFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFileChooserFileActionPerformed
+        if(jFileChooserFile.getSelectedFile()!=null)
+            f= jFileChooserFile.getSelectedFile();
+    }//GEN-LAST:event_jFileChooserFileActionPerformed
 
     /**
      * @param args the command line arguments
@@ -148,6 +171,7 @@ public class SourceChooser extends javax.swing.JDialog {
          */
         java.awt.EventQueue.invokeLater(new Runnable() {
 
+            @Override
             public void run() {
                 SourceChooser dialog = new SourceChooser(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
@@ -163,8 +187,8 @@ public class SourceChooser extends javax.swing.JDialog {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButtonOpen;
     private javax.swing.JFileChooser jFileChooserFile;
     private javax.swing.JLabel jLabelProgress;
     private javax.swing.JPanel jPanel1;
@@ -172,4 +196,9 @@ public class SourceChooser extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextAreaFiles;
     // End of variables declaration//GEN-END:variables
+    private File f;
+    
+    public File  getFile() {
+        return f;
+    }
 }
